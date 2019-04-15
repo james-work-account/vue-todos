@@ -1,6 +1,6 @@
 <template>
   <div class="github">
-    <a href="https://github.com/james-work-account"><i class="fab fa-github fa-2x"></i></a>
+    <a href="https://github.com/james-work-account/vue-todos"><i class="fab fa-github fa-2x"></i></a>
   </div>
 </template>
 

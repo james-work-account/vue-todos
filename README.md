@@ -1,29 +1,23 @@
-# test
+# Vue Todos App
+
+See live at https://james-whiteley-todos-vue.herokuapp.com/
 
 ## Project setup
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### Run locally
 ```
 yarn run serve
 ```
 
-### Compiles and minifies for production
+### Build for production
 ```
 yarn run build
 ```
 
-### Run your tests
+### Run production server
 ```
-yarn run test
+node server.js
 ```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
