@@ -1,10 +1,14 @@
 const express = require('express')
-const path = require('path')
-const serveStatic = require('serve-static')
+const history = require('connect-history-api-fallback')
+const app = express()
 
-let app = express()
-// eslint-disable-next-line no-path-concat
-app.use(serveStatic(__dirname + '/dist'))
+const staticFileMiddleware = express.static(__dirname + '/dist')
+app.use(staticFileMiddleware)
+app.use(history({
+  disableDotRule: true,
+  verbose: true
+}))
+app.use(staticFileMiddleware)
 
 const port = process.env.PORT || 5000
 app.listen(port, () => {

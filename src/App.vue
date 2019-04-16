@@ -1,17 +1,21 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <h1>Vue App</h1>
-      <router-link to="/">Without Vuex</router-link> |
-      <router-link to="/vuex">With Vuex</router-link>
+    <div id="body">
+      <div id="nav">
+        <h1>Vue App</h1>
+        <router-link to="/">Without Vuex</router-link> |
+        <router-link to="/vuex">With Vuex</router-link>
+      </div>
+      <router-view/>
     </div>
-    <router-view/>
-    <GitHubIcon />
+    <div id="footer">
+      <GitHubIcon />
+    </div>
   </div>
 </template>
 
 <script>
-import GitHubIcon from '@/with-vuex/components/GitHubIcon'
+import GitHubIcon from '@/common/components/GitHubIcon'
 
 export default {
   components: {
@@ -33,11 +37,12 @@ export default {
     text-align: center;
     color: #2c3e50;
     max-width: 750px;
-    margin: 25px auto 0;
+    margin: 0 auto 0;
   }
+
   #nav {
     padding: 30px;
-    margin: 25px auto 0;
+    margin: 0 auto 0;
   }
   #nav a {
     font-weight: bold;
@@ -56,6 +61,12 @@ export default {
   }
   .btn:active {
     background-color: #888
+  }
+
+  @media(max-width: 854px) {
+    #body {
+      padding-bottom: calc(18px + 18px + 10px + 8px) /* 2em footer font size + footer padding + 8px body padding*/
+    }
   }
 
   @media(max-width: 749px) {

@@ -16,6 +16,7 @@
   }
   div.github {
     position: fixed;
+    right: 0;
     bottom: 0;
     left: 0;
     padding: 0 0 5px 5px;
