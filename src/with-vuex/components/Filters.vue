@@ -12,7 +12,7 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'filters',
-  data() {
+  data () {
     return {
       filters
     }
@@ -20,7 +20,7 @@ export default {
   methods: {
     ...mapActions(['setFilter']),
     ...mapGetters(['getCurrentFilter']),
-    checkCurrentFilter(filter) {
+    checkCurrentFilter (filter) {
       return this.getCurrentFilter() === filter
     }
   }

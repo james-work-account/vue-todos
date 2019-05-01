@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     ...mapGetters({
-      todos: "getTodos"
+      todos: 'getTodos'
     })
   }
 }

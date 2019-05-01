@@ -12,12 +12,14 @@ import AddTodo from '@/without-vuex/components/AddTodo'
 import Filters from '@/without-vuex/components/Filters'
 import { defaultState, filters } from '@/common/common'
 
+const key = 'withoutVuexTodos'
+
 export default {
   name: 'home',
   components: {
     Todos, AddTodo, Filters
   },
-  data() {
+  data () {
     return {
       todos: defaultState().todos,
       text: defaultState().currentTodoText,
@@ -26,44 +28,65 @@ export default {
   },
   methods: {
     // AddTodo
-    changeText(e) {
+    changeText (e) {
       const text = event.target.value
       this.text = text
     },
-    add() {
-      if(this.text !== '') {
+    add () {
+      if (this.text !== '') {
         this.todos = [...this.todos, {
           id: Date.now(),
           text: this.text,
           checked: false
         }]
         this.text = ''
-        document.querySelector(".search input").value = "";
+        document.querySelector('.search input').value = ''
       }
     },
-    reset() {
+    reset () {
       this.todos = defaultState().todos
     },
     // Filters
-    setFilter(filter) {
+    setFilter (filter) {
       this.currentFilter = filter
     },
     // Todos
-    handleDelete(todo) {
-      this.todos = this.todos.filter(td => td.id != todo.id)
+    handleDelete (todo) {
+      this.todos = this.todos.filter(td => td.id !== todo.id)
     },
-    handleCheck(todo) {
+    handleCheck (todo) {
       this.todos = this.todos.map(td => td.id === todo.id ? { ...td, checked: !td.checked } : td)
+    },
+    getTodosFromLocalStorage () {
+      if (localStorage.hasOwnProperty(key)) {
+        let value = localStorage.getItem(key)
+        try {
+          value = JSON.parse(value)
+          this.todos = value
+          return this.todos
+        } catch {
+          return value
+        }
+      } else {
+        return this.todos
+      }
     }
   },
   computed: {
-    getTodos() {
-      const todos = this.todos
+    getTodos () {
+      const todos = this.getTodosFromLocalStorage()
       switch (this.currentFilter) {
         case filters.allTodos: return todos
         case filters.completedTodos: return todos.filter(td => td.checked)
         case filters.uncompletedTodos: return todos.filter(td => !td.checked)
         default: return todos
+      }
+    }
+  },
+  watch: {
+    todos: (val) => {
+      if (localStorage.getItem(key) !== JSON.stringify(val)) {
+        localStorage.setItem(key, JSON.stringify(val))
       }
     }
   }

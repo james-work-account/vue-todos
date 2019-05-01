@@ -20,9 +20,9 @@ export default {
       changeText: 'changeTodoText',
       reset: 'resetTodos'
     }),
-    submitTodo() {
-      this.add();
-      document.querySelector(".search input").value = "";
+    submitTodo () {
+      this.add()
+      document.querySelector('.search input').value = ''
     }
   }
 }

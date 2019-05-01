@@ -12,13 +12,13 @@ import { filters } from '@/common/common'
 export default {
   name: 'filters',
   props: ['setFilter', 'currentFilter'],
-  data() {
+  data () {
     return {
       filters
     }
   },
   methods: {
-    checkCurrentFilter(filter) {
+    checkCurrentFilter (filter) {
       return this.currentFilter === filter
     }
   }

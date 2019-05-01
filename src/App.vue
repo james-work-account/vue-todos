@@ -24,7 +24,6 @@ export default {
 }
 </script>
 
-
 <style>
   * {
     font-size: 18px
