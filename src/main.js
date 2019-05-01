@@ -8,5 +8,9 @@ Vue.config.productionTip = false
 new Vue({
   router,
   store,
+  // Update localStorage for Vuex page
+  beforeCreate () {
+    this.$store.commit('initialiseStore')
+  },
   render: h => h(App)
 }).$mount('#app')

@@ -65,7 +65,8 @@ export default {
           this.todos = value
           return this.todos
         } catch {
-          return value
+          this.todos = value
+          return this.todos
         }
       } else {
         return this.todos

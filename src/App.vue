@@ -2,9 +2,10 @@
   <div id="app">
     <div id="body">
       <div id="nav">
-        <h1>Vue App</h1>
+        <h1>Todos App</h1>
         <router-link to="/">Without Vuex</router-link> |
-        <router-link to="/vuex">With Vuex</router-link>
+        <router-link to="/vuex">With Vuex</router-link> |
+        <router-link to="/about">About</router-link>
       </div>
       <router-view/>
     </div>
@@ -26,7 +27,8 @@ export default {
 
 <style>
   * {
-    font-size: 18px
+    font-size: 18px;
+    --greenLinkColour: #42b983
   }
 
   #app {
@@ -48,7 +50,7 @@ export default {
     color: #2c3e50;
   }
   #nav a.router-link-exact-active {
-    color: #42b983;
+    color: var(--greenLinkColour);
   }
   .btn {
     border: 3px solid #000;

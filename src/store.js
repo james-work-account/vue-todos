@@ -4,9 +4,18 @@ import { defaultState, filters } from '@/common/common'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+const key = 'withVuexTodos'
+
+const store = new Vuex.Store({
   state: defaultState(),
   mutations: {
+    // Update state with localStorage values if exist
+    initialiseStore (state) {
+      if (localStorage.getItem(key)) {
+        state.todos = JSON.parse(localStorage.getItem(key))
+      }
+    },
+
     deleteTodo (state, todo) {
       state.todos = state.todos.filter(td => td.id !== todo.id)
     },
@@ -75,3 +84,10 @@ export default new Vuex.Store({
     }
   }
 })
+
+// Update localStorage when todos changes
+store.watch((state) => state.todos, (val) => {
+  localStorage.setItem(key, JSON.stringify(val))
+})
+
+export default store
